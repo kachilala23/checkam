@@ -1,20 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import {
+    OnBoarding,
+    SignIn,
+    SignUp,
+    ForgotPassword,
+    Otp
+} from './screens'
+
+const Stack = createStackNavigator();
+
+const App = () => {
+    
+    // React.useEffect(() => {
+    //     SplashScreen.hide();
+    // }, [])
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false
+                }}
+                initialRouteName={'OnBoarding'}
+            >
+                <Stack.Screen
+                    name="OnBoarding"
+                    component={OnBoarding}
+                />
+
+                <Stack.Screen
+                    name="SignIn"
+                    component={SignIn}
+                />
+
+                <Stack.Screen
+                    name="SignUp"
+                    component={SignUp}
+                />
+
+                <Stack.Screen
+                    name="ForgotPassword"
+                    component={ForgotPassword}
+                />
+
+                <Stack.Screen
+                    name="Otp"
+                    component={Otp}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
