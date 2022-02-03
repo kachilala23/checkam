@@ -42,6 +42,56 @@ const OnBoarding = () => {
             }}
         >
             {renderHeaderLogo()}
+
+            <Animated.FlatList 
+                horizontal
+                pagingEnabled
+                data={constants.onboarding_screens}
+                scrollEventThrottle={16}
+                snapToAlignment="center"
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => `${item.id}`}
+                renderItem={({ item, index }) => {
+                    return (
+                        <View 
+                            style={{
+                                width: SIZES.width
+                            }}
+                        >
+                        
+                        {/* Header */}
+
+                        <View 
+                            style={{
+                                flex: 3
+                            }}
+                        >
+
+                            <ImageBackground 
+                                source={item.backgroundImage}
+                                style={{
+                                    flex: 1,
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                    height: "100%",
+                                    width: "100%"
+                                }}
+                            >
+                            </ImageBackground>
+
+                        </View>
+
+
+
+
+                        {/* Details */}
+
+
+                        </View>
+                    )
+                }}
+            />
+
         </View>
     )
 }
